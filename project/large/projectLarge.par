@@ -1,0 +1,4 @@
+DIRECTORY=exp_dir
+DUMPFILE=projectLarge.dmp
+LOGFILE=projectLarge.log
+TABLES= team, player, league, league_standing, tournament, game

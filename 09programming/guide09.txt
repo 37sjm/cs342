@@ -1,0 +1,44 @@
+	1. Chapter 17
+		a. B+ Trees — Focus on the Section 17.3 (skipping the material on algorithms).
+			i. Compare and contrast B-trees and B+-trees.
+				1) an organizational structure for information storage and retrieval in the form of a tree in which all terminal nodes are the same distance from the base, and all nonterminal nodes have between n and 2 n subtrees or pointers 
+				2) B+ trees are trees with data pointers stored only at the leaf nodes of the tree
+			ii. Explain what it means for such a tree to be balanced.
+				1) The tree must have an equal number of nodes on each side.
+			iii. Compare and contrast tree and data pointers.
+				1) Tree pointers are pointers to another node in the tree
+				2) Data pointers are pointers to the records
+		b. Explain the nature of multiple-attribute indexes (see the introduction to Section 17.4).
+			i. Keys can contain multiple attribute, which means there needs to a specific way of ordering these to create consistency (such as lexicographic ordering).
+		c. Explain the nature of hash and bitmap indexes (see Sections 17.5.1–2).
+			i. Bitmap index is a popular data structure used for relations that contain a large number of rows. It creates an index for one or more columns, and each value or value range in those columns is indexed.
+			ii. Hash index is a secondary structure to access the file by using hashing on a search key other than the one used for the primary data file organization.
+		d. Physical Database Design — Focus on the Section 17.7.
+			i. Explain the concept of physical database design (PDD).
+				1) Physical database design translates the logical data model into a set of SQL statements that define the database.
+			ii. Compare and contrast the uses for B-tree, hash and bitmap indexes in PDD.
+				1) RDBMS's use B+ tress for indexing in general
+				2) Dynamic hashing is used often for files that are volatile (grow and shrink continuously
+				3) Bitmap indexes are used to index files that are not as volatile.
+				
+			iii. Explain whether denormalization should be considered a form of PDD.
+				1) I don't believe that denormilization should be considered a part of PDD, because denormilization deals with the logical data model, but does not in itself translate to SQL statements that define the table.
+	2. Chapter 18
+		a. Explain the concept of query optimization (see the introduction to the chapter).
+			i. Query optimization is a function of many relational database management systems. The query optimizer attempts to determine the most efficient way to execute a givenquery by considering the possible query plans
+	3. Oracle’s EXPLAIN PLAN
+		a. Load the small version of the Internet Movie DB defined in the repo (cs342/databases/imdb), configure the auto-trace facility in SQL*Plus (SET SERVEROUTPUT ON; & SET AUTOTRACE ON;) and generate an execuation plan for some simple query. What is the execution plan operation used and what does that operation do?
+			i. To see this, after setting server output and auto-trace on, I used "explain plan for select * from movie;" and then "select plan_table_output from table(dbms_xplan.display());" (it did not automatically display from the explain plan query) and it output statistics about the plan selected, like the hash value, cpu_cost, bytes used, rows processed, etc.
+		b. Explain at least the following operations (see Oracle Execution Plan Operations).
+			§ TABLE ACCESS FULL
+				□  Reads the entire table—all rows and columns—as stored on the disk
+			§ TABLE ACCESS BY INDEX
+				□ Retrieves a row from the table using the ROWID retrieved from the preceding index lookup
+			§ NESTED LOOPS
+				□ The nested loops join is the most fundamental join algorithm. It works like using two nested queries: the outer or driving query to fetch the results from one table and a second query for each row from the driving query to fetch the corresponding data from the other table.
+			§ HASH JOIN
+				□ The hash join loads the candidate records from one side of the join into a hash table that is then probed for each row from the other side of the join.
+			§ INDEX UNIQUE SCAN
+				□ The INDEX UNIQUE SCAN performs the B-tree traversal only. The database uses this operation if a unique constraint ensures that the search criteria will match no more than one entry
+				□ For Oracle’s reference documentation, see Database Performance Tuning Guide, particularly the “Using EXPLAIN PLAN” section. Note that the text also explains these operations conceptually in Chapter 18.
+

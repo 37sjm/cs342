@@ -1,0 +1,28 @@
+;;; 
+Export: Release 12.1.0.2.0 - Production on Tue Apr 18 14:16:18 2017
+
+Copyright (c) 1982, 2014, Oracle and/or its affiliates.  All rights reserved.
+;;; 
+Connected to: Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
+Starting "MJS73"."SYS_EXPORT_TABLE_01":  mjs73/******** parfile=project/large/projectLarge.par 
+Estimate in progress using BLOCKS method...
+Processing object type TABLE_EXPORT/TABLE/TABLE_DATA
+Total estimation using BLOCKS method: 448 KB
+Processing object type TABLE_EXPORT/TABLE/TABLE
+Processing object type TABLE_EXPORT/TABLE/CONSTRAINT/CONSTRAINT
+Processing object type TABLE_EXPORT/TABLE/INDEX/STATISTICS/INDEX_STATISTICS
+Processing object type TABLE_EXPORT/TABLE/CONSTRAINT/REF_CONSTRAINT
+Processing object type TABLE_EXPORT/TABLE/STATISTICS/TABLE_STATISTICS
+Processing object type TABLE_EXPORT/TABLE/STATISTICS/MARKER
+. . exported "MJS73"."PLAYER"                            59.04 KB    1089 rows
+. . exported "MJS73"."GAME"                              7.554 KB      12 rows
+. . exported "MJS73"."LEAGUE"                            5.968 KB       2 rows
+. . exported "MJS73"."LEAGUE_STANDING"                   6.429 KB      39 rows
+. . exported "MJS73"."TEAM"                              7.851 KB      39 rows
+. . exported "MJS73"."TOURNAMENT"                        5.968 KB       2 rows
+Master table "MJS73"."SYS_EXPORT_TABLE_01" successfully loaded/unloaded
+******************************************************************************
+Dump file set for MJS73.SYS_EXPORT_TABLE_01 is:
+  C:\APP\SYS1\PRODUCT\12.1.0\DBHOME_1\BIN\PROJECT\LARGE\PROJECTLARGE.DMP
+Job "MJS73"."SYS_EXPORT_TABLE_01" successfully completed at Tue Apr 18 14:16:23 2017 elapsed 0 00:00:05

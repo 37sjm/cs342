@@ -1,0 +1,40 @@
+1. Read Sections 10.1, 10.4.1 & 26.1.1–2:
+	a. Name the three basic approaches to database programming.
+		i. Embedding database commands in a general-purpose programming language.
+		ii. Using a library of database functions or classes.
+		iii. Designing a brand-new language, creating a database programming language.
+	b. Explain the concepts of:
+		i. impedance mismatch
+			i. The term used to refer to the problems that occur because of differences between the database model and the programming language model.
+		ii. stored procedures
+			i. A subroutine available to applications that access a relational database management system. Such procedures are stored in the database data dictionary.
+		iii. Triggers
+			i. An SQL procedure that initiates an action (i.e., fires an action) when an event (INSERT, DELETE or UPDATE) occurs. Since triggers are event-driven specialized procedures, they are stored in and managed by the DBMS.
+2. Read Server-Side Programming: PL/SQL and Java.. Focus on server-side programming, PL/SQL and triggers; skip the section on “Overview of Java in Oracle Database”.
+	a. Compare and contrast:
+		i. procedural vs non-procedural languages.
+			i. Procedural languages specify a well structured series of steps, whereas non-procedural languages focus more on inputs and outputs of data, rather than the steps taken.
+		ii. client-side vs server-side database programming.
+			i. Client-side programming embeds SQL statements in languages like C, C++, or Java.
+			ii. Server side programming uses the data logic that resides in the database.
+	b. Explain why one would want to do server-side programming using PL/SQL.
+		i. PL/SQL is useful because it is an extension of regular SQL, and is integrated within the DB.
+	c. For each of the following code segments, identify the type of the database object and explain what it does.
+			i. CREATE PROCEDURE limited_count (limit IN integer) AS
+BEGIN
+  FOR i IN 1..limit LOOP
+      dbms_output.put_line(i);
+  END LOOP;
+END;
+				1) This is a procedure that takes a limit integer, and uses a loop to print each value until the limit is reached. 
+			ii. BEGIN
+  dbms_output.put_line('Hello, PL/SQL!');
+END;
+				1) This is an anonymous block of code that prints "Hello, PL/SQL!" 
+			iii. CREATE TRIGGER log_trigger
+  BEFORE INSERT OR UPDATE OF lastName ON Person
+  FOR each row
+BEGIN
+  dbms_output.put_line('Hello, name change!');
+END;
+This is a trigger, that prints "Hello, name change!" before an insertion or update of a new lastName on the Person table.

@@ -1,0 +1,17 @@
+select Movie.title 
+from Movie, Casting, Performer
+where Performer.firstName = 'Chewbacca'
+and Casting.performerId = Performer.id
+and Casting.MovieId = Movie.id;
+
+
+(select distinct id from Movie)
+union
+(select distinct movieId from Casting);
+
+select * from Performer where lastname is null;
+
+select firstname from (select * from Performer where id < 3);
+
+
+select title, firstname from Movie, performer, casting where movie.id = casting.movieid and casting.performerid = performer.id;

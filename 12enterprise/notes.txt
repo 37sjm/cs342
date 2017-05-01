@@ -1,0 +1,127 @@
+Compare and contrast the database connection you built in Guide 12 (in Intellij IDEA) and this database connection (in GlassFish). 
+Do we need both? If so, explain why; if not, explain why not.
+
+Answer: Yes, I believe that we do need both. The one we built in the guide is specific to Intellij so I don't
+think that the connection would be able to be used in anywhere except as a testing tool for developers.
+
+How does Intellij map the database tables into Java entity classes?
+I believe that Intellij is able to use the database schema to map the tables into Java classes.
+
+What is the PK class do?
+The PK class is the primary key class, which helps to create the Java entity classes.
+
+Does Intellij default to field or property annotations?
+Intellij is defaulting to annotate the methods that are used to get the fields.
+
+
+
+Does this application perform marshalling? If so, explain what the marshalling does; if not, explain why it’s not needed.
+Yes, we take data from the database and send it to the client in the rest api, marshalled into JSON.
+Does this code perform any injection? Again, explain…
+Yes, I believe that our dependencies have the "inversion of control" that we talked about in class. The entity manager for example is not assigned anywhere,
+which is where I believe we see an example of dependency injection.
+What does the entity manager do in this code, if anything?
+It seems that the entity manager is able to find, update, delete, etc. on the type of entity that it was associated with.
+
+NOTE: I was unable to finish the lab past 12.3. I followed the directions to the best of my knowledge, restarted and got the same error, and tried to debug
+using the following stack trace, but was unable to get this working. The test connection worked for the database, and I was able to
+successfully query the database from intellij, and create the entity classes through intellij, but continued getting
+an error when trying to deploy. Here's the stack trace - 
+Local Exception Stack: 
+Exception [EclipseLink-4002] (Eclipse Persistence Services - 2.6.1.v20150605-31e8258): org.eclipse.persistence.exceptions.DatabaseException
+Internal Exception: java.sql.SQLException: Error in allocating a connection. Cause: null
+Error Code: 0
+	at org.eclipse.persistence.exceptions.DatabaseException.sqlException(DatabaseException.java:316)
+	at org.eclipse.persistence.sessions.JNDIConnector.connect(JNDIConnector.java:147)
+	at org.eclipse.persistence.sessions.DatasourceLogin.connectToDatasource(DatasourceLogin.java:162)
+	at org.eclipse.persistence.internal.sessions.DatabaseSessionImpl.setOrDetectDatasource(DatabaseSessionImpl.java:207)
+	at org.eclipse.persistence.internal.sessions.DatabaseSessionImpl.loginAndDetectDatasource(DatabaseSessionImpl.java:750)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryProvider.login(EntityManagerFactoryProvider.java:265)
+	at org.eclipse.persistence.internal.jpa.EntityManagerSetupImpl.deploy(EntityManagerSetupImpl.java:731)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.getAbstractSession(EntityManagerFactoryDelegate.java:205)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryDelegate.createEntityManagerImpl(EntityManagerFactoryDelegate.java:305)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.createEntityManagerImpl(EntityManagerFactoryImpl.java:337)
+	at org.eclipse.persistence.internal.jpa.EntityManagerFactoryImpl.createEntityManager(EntityManagerFactoryImpl.java:303)
+	at org.glassfish.persistence.jpa.JPADeployer$2.visitPUD(JPADeployer.java:451)
+	at org.glassfish.persistence.jpa.JPADeployer$PersistenceUnitDescriptorIterator.iteratePUDs(JPADeployer.java:510)
+	at org.glassfish.persistence.jpa.JPADeployer.iterateInitializedPUsAtApplicationPrepare(JPADeployer.java:492)
+	at org.glassfish.persistence.jpa.JPADeployer.event(JPADeployer.java:398)
+	at org.glassfish.kernel.event.EventsImpl.send(EventsImpl.java:131)
+	at com.sun.enterprise.v3.server.ApplicationLifecycle.deploy(ApplicationLifecycle.java:487)
+	at com.sun.enterprise.v3.server.ApplicationLifecycle.deploy(ApplicationLifecycle.java:219)
+	at org.glassfish.deployment.admin.DeployCommand.execute(DeployCommand.java:491)
+	at com.sun.enterprise.v3.admin.CommandRunnerImpl$2$1.run(CommandRunnerImpl.java:539)
+	at com.sun.enterprise.v3.admin.CommandRunnerImpl$2$1.run(CommandRunnerImpl.java:535)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:360)
+	at com.sun.enterprise.v3.admin.CommandRunnerImpl$2.execute(CommandRunnerImpl.java:534)
+	at com.sun.enterprise.v3.admin.CommandRunnerImpl$3.run(CommandRunnerImpl.java:565)
+	at com.sun.enterprise.v3.admin.CommandRunnerImpl$3.run(CommandRunnerImpl.java:557)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.security.auth.Subject.doAs(Subject.java:360)
+	at com.sun.enterprise.v3.admin.CommandRunnerImpl.doCommand(CommandRunnerImpl.java:556)
+	at com.sun.enterprise.v3.admin.CommandRunnerImpl.doCommand(CommandRunnerImpl.java:1464)
+	at com.sun.enterprise.v3.admin.CommandRunnerImpl.access$1300(CommandRunnerImpl.java:109)
+	at com.sun.enterprise.v3.admin.CommandRunnerImpl$ExecutionContext.execute(CommandRunnerImpl.java:1846)
+	at com.sun.enterprise.v3.admin.CommandRunnerImpl$ExecutionContext.execute(CommandRunnerImpl.java:1722)
+	at com.sun.enterprise.v3.admin.AdminAdapter.doCommand(AdminAdapter.java:534)
+	at com.sun.enterprise.v3.admin.AdminAdapter.onMissingResource(AdminAdapter.java:224)
+	at org.glassfish.grizzly.http.server.StaticHttpHandlerBase.service(StaticHttpHandlerBase.java:189)
+	at com.sun.enterprise.v3.services.impl.ContainerMapper$HttpHandlerCallable.call(ContainerMapper.java:459)
+	at com.sun.enterprise.v3.services.impl.ContainerMapper.service(ContainerMapper.java:167)
+	at org.glassfish.grizzly.http.server.HttpHandler.runService(HttpHandler.java:206)
+	at org.glassfish.grizzly.http.server.HttpHandler.doHandle(HttpHandler.java:180)
+	at org.glassfish.grizzly.http.server.HttpServerFilter.handleRead(HttpServerFilter.java:235)
+	at org.glassfish.grizzly.filterchain.ExecutorResolver$9.execute(ExecutorResolver.java:119)
+	at org.glassfish.grizzly.filterchain.DefaultFilterChain.executeFilter(DefaultFilterChain.java:283)
+	at org.glassfish.grizzly.filterchain.DefaultFilterChain.executeChainPart(DefaultFilterChain.java:200)
+	at org.glassfish.grizzly.filterchain.DefaultFilterChain.execute(DefaultFilterChain.java:132)
+	at org.glassfish.grizzly.filterchain.DefaultFilterChain.process(DefaultFilterChain.java:111)
+	at org.glassfish.grizzly.ProcessorExecutor.execute(ProcessorExecutor.java:77)
+	at org.glassfish.grizzly.nio.transport.TCPNIOTransport.fireIOEvent(TCPNIOTransport.java:536)
+	at org.glassfish.grizzly.strategies.AbstractIOStrategy.fireIOEvent(AbstractIOStrategy.java:112)
+	at org.glassfish.grizzly.strategies.WorkerThreadIOStrategy.run0(WorkerThreadIOStrategy.java:117)
+	at org.glassfish.grizzly.strategies.WorkerThreadIOStrategy.access$100(WorkerThreadIOStrategy.java:56)
+	at org.glassfish.grizzly.strategies.WorkerThreadIOStrategy$WorkerThreadRunnable.run(WorkerThreadIOStrategy.java:137)
+	at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.doWork(AbstractThreadPool.java:591)
+	at org.glassfish.grizzly.threadpool.AbstractThreadPool$Worker.run(AbstractThreadPool.java:571)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: java.sql.SQLException: Error in allocating a connection. Cause: null
+	at com.sun.gjc.spi.base.AbstractDataSource.getConnection(AbstractDataSource.java:152)
+	at org.eclipse.persistence.sessions.JNDIConnector.connect(JNDIConnector.java:144)
+	... 53 more
+Caused by: javax.resource.spi.ResourceAllocationException: Error in allocating a connection. Cause: null
+	at com.sun.enterprise.connectors.ConnectionManagerImpl.internalGetConnection(ConnectionManagerImpl.java:319)
+	at com.sun.enterprise.connectors.ConnectionManagerImpl.allocateConnection(ConnectionManagerImpl.java:196)
+	at com.sun.enterprise.connectors.ConnectionManagerImpl.allocateConnection(ConnectionManagerImpl.java:171)
+	at com.sun.enterprise.connectors.ConnectionManagerImpl.allocateConnection(ConnectionManagerImpl.java:166)
+	at com.sun.gjc.spi.base.AbstractDataSource.getConnection(AbstractDataSource.java:146)
+	... 54 more
+Caused by: com.sun.appserv.connectors.internal.api.PoolingException
+	at com.sun.enterprise.resource.pool.datastructure.RWLockDataStructure.addResource(RWLockDataStructure.java:103)
+	at com.sun.enterprise.resource.pool.ConnectionPool.addResource(ConnectionPool.java:282)
+	at com.sun.enterprise.resource.pool.ConnectionPool.createResourceAndAddToPool(ConnectionPool.java:1512)
+	at com.sun.enterprise.resource.pool.ConnectionPool.createResources(ConnectionPool.java:944)
+	at com.sun.enterprise.resource.pool.ConnectionPool.initPool(ConnectionPool.java:230)
+	at com.sun.enterprise.resource.pool.ConnectionPool.internalGetResource(ConnectionPool.java:511)
+	at com.sun.enterprise.resource.pool.ConnectionPool.getResource(ConnectionPool.java:381)
+	at com.sun.enterprise.resource.pool.PoolManagerImpl.getResourceFromPool(PoolManagerImpl.java:245)
+	at com.sun.enterprise.resource.pool.PoolManagerImpl.getResource(PoolManagerImpl.java:170)
+	at com.sun.enterprise.connectors.ConnectionManagerImpl.getResource(ConnectionManagerImpl.java:360)
+	at com.sun.enterprise.connectors.ConnectionManagerImpl.internalGetConnection(ConnectionManagerImpl.java:307)
+	... 58 more
+Caused by: com.sun.appserv.connectors.internal.api.PoolingException
+	at com.sun.enterprise.resource.pool.ConnectionPool.createSingleResource(ConnectionPool.java:924)
+	at com.sun.enterprise.resource.pool.ConnectionPool.createResource(ConnectionPool.java:1189)
+	at com.sun.enterprise.resource.pool.datastructure.RWLockDataStructure.addResource(RWLockDataStructure.java:98)
+	... 68 more
+Caused by: java.lang.NullPointerException
+	at com.sun.gjc.util.SecurityUtils.getPasswordCredential(SecurityUtils.java:119)
+	at com.sun.gjc.spi.DSManagedConnectionFactory.createManagedConnection(DSManagedConnectionFactory.java:100)
+	at com.sun.enterprise.resource.allocator.LocalTxConnectorAllocator.createResource(LocalTxConnectorAllocator.java:87)
+	at com.sun.enterprise.resource.pool.ConnectionPool.createSingleResource(ConnectionPool.java:907)
+	... 70 more
+]]
+
+[2017-04-28T22:50:57.015-0400] [glassfish 4.1] [SEVERE] [] [javax.enterprise.system.core] [tid: _ThreadID=44 _ThreadName=admin-listener(5)] [timeMillis: 1493434257015] [levelValue: 1000] [[
+  Exception while deploying the app [Lab12_war_exploded]]]

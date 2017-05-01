@@ -1,0 +1,12 @@
+--7.3.a
+--if retrieving all
+π firstname, lastname, birthdate (Person)
+
+--only GenX
+π firstname, lastname, birthdate ( σ birthdate > 1960 and birthdate < 1976 (Person))
+
+7.3.b
+--all people
+t.firstname, t.lastname, t.birthdate | Person(t)
+--only genx
+t.firstname, t.lastname, t.birthdate | Person(t) AND t.birthdate > 1960 and t.birthdate < 1976

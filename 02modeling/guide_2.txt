@@ -1,0 +1,41 @@
+	1. Chapter 3 (focus primarily on Sections 3.1-3.2)
+		a. Who invented the relational data model? When and where did they do their work?
+			i. Edgar F. Codd invented the relational model in 1969.
+			ii. Worked at IBM.
+		b. Explain the following terms: relation, attribute, domain, n-tuple, NULL value, keys (primary, foreign, candidate, super), referenced and referencing records.
+			i. Relation - A table containing columns (table)
+			ii. Attribute - A database field (Column)
+			iii. Domain - a data domain refers to all the values which a data element may contain.
+			iv. N-tuple - a set of data (row)
+			v. Keys - unique to the entity, used to identify.
+			vi. Reference - data objects relevant to transactions , data that define the set of permissible values to be used by other data fields
+		c. Are tuples in a relation ordered? How about attribute values in a tuple? Explain why or why not.
+			i. Tuples are a set, they do not have order. A relation attempts to represent facts at a logical or abstract level in groups, not in order.
+		d. Can attributes have multiple values in a single n-tuple? Why or why not?
+			i. No, because there would be no other way to identify which "version" of that attribute you wanted to specify.
+	2. Chapter 4 (focus primarily on Sections 4.1-4.2 & 4.4) — Make sure that you know how to:
+		a. Create tables with specified constraints.
+			i. Example:
+				1) SQL> CREATE TABLE CUSTOMERS(
+   ID   INT              NOT NULL,
+   NAME VARCHAR (20)     NOT NULL,
+   AGE  INT              NOT NULL,
+   ADDRESS  CHAR (25) ,
+   SALARY   DECIMAL (18, 2),       
+   PRIMARY KEY (ID)
+);
+		b. Use the DML commands: INSERT, DELETE and UPDATE.
+			i. Insert
+				1) INSERT INTO TABLE_NAME VALUES (value1,value2,value3,...valueN);
+			ii. Delete
+				1) DELETE FROM table_name
+WHERE [condition];
+			iii. Update
+				1) UPDATE table_name
+SET column1 = value1, column2 = value2...., columnN = valueN
+WHERE [condition];
+		c. Understand the ON DELETE actions: SET NULL, CASCADE.
+			i. Set Null - sets the corresponding records in the child table to null
+			ii. ON DELETE CASCADE - delete the child table when the parent table is deleted
+		d. Write single-and-multi-table queries — We assumed this in lab 1 because it was covered in CS 262; if necessary, review the basic commands in Section 4.3.
+

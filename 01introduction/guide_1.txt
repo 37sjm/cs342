@@ -1,0 +1,38 @@
+Chapter 1
+		○ Compare and contrast data, databases, database (management) systems and information systems.
+			• Data - Facts and statistics, gathered to use for reference or analysis.
+			• Database - a structured set of data held in a computer, especially one that is accessible in various ways.
+			• Database Management System - computerized system that enables users to create and maintain a database.
+			• Information System - the process of and tools for storing, managing, using and gathering of data and communications in an organization.
+		○ Compare and contrast database systems with the following, using the main characteristics of the database approach in your discussion.
+			• data structures and algorithms
+			• traditional file systems
+			• Some databases use object oriented data structures to create persistent storage for their objects/variables. Objects can then have a life extended past the termination of the program, as it is then stored in a database to be read from.
+			• Traditional file systems are simply an agreed upon format of writing data to a file. The data still persists past execution as it is in a file, but these have to be read in entirely, as there are no queries/transactions to be done on a file.
+		○ Identify the stakeholders of database systems.
+			• Application Developers - developers who will use a database as their method of storing data in their application.
+			• End-Users - users who do not need to know how the database works, but need the information on it. For example, a bank teller who needs to check an account balance.
+			• IT - those who setup and maintain the database
+	• Chapter 2
+		○ Explain the significance of the categories of data models. Which type of model is displayed in Figure 2.1?
+			• High-level data models provide concepts that are close to the way many users perceive data, whereas low-level or physical data models provide concepts that describe the details of how data is stored on the computer storage level.
+			• Representational data models provide concepts that may be easily understood by end users but that are not too far removed from the way data is organized in computer storage.
+				□ Figure 2.1 is this way, it explains the data model conceptually, without becoming too low-level that end users would be unable to understand.
+		○ Explain the structure and significance of the three-schema architecture.
+			• Internal Schema
+				□ Describes the physical storage structure of the database. Uses a physical data model and describes the complete details of data storage and access paths for the database.
+			• Conceptual Schema
+				□ Describes the structure of the whole database for a community of users. The conceptual schema hides the details of physical storage structures and concentrates on describing entities, data types, relationships, user operations, and constraints.
+			• External Schema
+				□ Describes the part of the database that a particular user group is interested in, and hides the rest of the database from that user group.
+		○ Explain the tiers used in a typical web-based information system.
+			• Three tiers
+				□ Client
+					® GUI, Web Interface
+					® Presentation Layer
+				□ Application Server
+					® Application Programs, Web Pages
+					® Business Logic Layer
+				□ Database Server
+					® Database Management System
+Database Services Layer

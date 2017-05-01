@@ -1,0 +1,13 @@
+1.14a. The following columns would need to change:
+	In the Student table:
+		* Major
+	In the Course table:
+		* Course_number
+		* Department
+	In the Section table:
+		* Course_number
+	In the Prerequisite table:
+		* Course_number
+		* Prerequesite_number
+
+1.14b. Yes, since the department is included in the Course_number column, we could remove that prefix from the Course_number in the Course table, leaving us with a numerical id and a department. Split all of the columns containing Course_number in the same way, so that the only column requiring updating is the Department column

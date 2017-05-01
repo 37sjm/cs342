@@ -1,0 +1,37 @@
+I got my data off of ESPN's soccer website. I built a web scraper in ruby to get data on teams, league standings, and player statistics. The only information that did not come from espnfc was the game data (it'll take more research for the best way to get a league schedule) and leagues/tournaments because there are only two different leagues and tournaments that I want to be monitoring, each with ~20 teams. Having any more leagues would be too much, as I'm already storing around 1000 players.
+
+Non-trivial Functional Dependencies -
+	Team table -
+		id -> name, wins, losses, ties
+		(technically, there could be two teams with the same name)
+
+	Player table -
+		teamId, num -> name, pos, age, gs, sub, goals, shots, assists, fc, fs
+
+	League table -
+		id -> name, location
+
+	League_Standing table -
+		teamId, leagueId -> Standing
+
+	tournament table -
+		id -> name, location
+
+	game table -
+		team_one_id, team_two_id, game_date -> team_one_score, team_two_score, predicted_winner
+
+Non-trivial Multivalued Dependencies -
+	Team Table ->
+		there will only ever be one tuple with a given id (no multivalued dependencies)
+	Player Table ->
+		there will only ever be one tuple with a given number on a given team
+	League Table -> 
+		there will only ever be one tuple with a given id
+	League_Standing table ->
+		there will only be one standing given a teamId and leagueId
+	Tournament table ->
+		there will only ever be one tuple with a given id
+	Game table ->
+		there will only ever be one game given two team id's and a date
+
+This schema is 4NF. I chose 4NF because I believe that it will be the best to maintain/write queries for as it will keep data cleaner/simpler than other forms. Being very new at creating database schemas, I felt that there is a high importance on keeping things simple and clean, so as to not fall into mistakes that may lead to headaches writing queries later on.

@@ -1,0 +1,31 @@
+SQL> lock table movie in exclusive mode nowait;
+
+Table(s) Locked.
+
+SQL> update movie set rank = (select rank from movie where id = 333856) + 0.2 where id = 333856;
+
+1 row updated.
+
+SQL> select rank from movie where id = 333856;
+
+      RANK                                                                      
+----------                                                                      
+       7.1                                                                      
+
+SQL> commit;
+
+Commit complete.
+
+SQL> select rank from movie where id = 333856;
+
+      RANK                                                                      
+----------                                                                      
+       7.1                                                                      
+
+SQL> select rank from movie where id = 333856;
+
+      RANK                                                                      
+----------                                                                      
+         7                                                                      
+
+SQL> spool off;

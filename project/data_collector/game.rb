@@ -1,0 +1,12 @@
+`echo "insert into game values (0, 1, 2, '12-Jan-2017', null, null, 1);" >> ../oracle_files/data.sql`
+`echo "insert into game values (1, 4, 18, '19-Jan-2017', 1, 2, 18);" >> ../oracle_files/data.sql`
+`echo "insert into game values (2, 0, 12, '12-Jan-2017', 0, 0, null);" >> ../oracle_files/data.sql`
+`echo "insert into game values (3, 6, 13, '22-Jan-2017', 2, 0, 13);" >> ../oracle_files/data.sql`
+`echo "insert into game values (4, 5, 15, '27-Jan-2017', 5, 3, 15);" >> ../oracle_files/data.sql`
+`echo "insert into game values (5, 16, 3, '23-Jan-2017', 0, 0, 16);" >> ../oracle_files/data.sql`
+`echo "insert into game values (6, 8, 2, '02-Jan-2017', null, null, 2);" >> ../oracle_files/data.sql`
+`echo "insert into game values (7, 4, 1, '01-Jan-2017', 1, 2, 14);" >> ../oracle_files/data.sql`
+`echo "insert into game values (8, 9, 0, '08-Jan-2017', 2, 0, null);" >> ../oracle_files/data.sql`
+`echo "insert into game values (9, 11, 7, '11-Jan-2017', 2, 4, 11);" >> ../oracle_files/data.sql`
+`echo "insert into game values (10, 14, 15, '14-Jan-2017', 3, 3, 15);" >> ../oracle_files/data.sql`
+`echo "insert into game values (11, 10, 3, '19-Jan-2017', 2, 1, 1);" >> ../oracle_files/data.sql`

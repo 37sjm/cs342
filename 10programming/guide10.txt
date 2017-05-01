@@ -1,0 +1,31 @@
+	1. Sections 20.1-20.4.1 & 20.6 — Explain the following.
+		a. interleaving vs. parallelism
+			i. If the computer system has multiple hardware processors, parallel processing is possible. 
+			ii. Interleaved concurrency is where threads are switched back and forth, so as to run "two processes at once" even though only one thread runs at a time.
+		b. the lost update and dirty read problems
+			i. Lost updates occur when two different transactions are trying to update the same column/row and the first update is "lost"
+			ii. Dirty reads occur when one transaction reads data that has been modified by another transaction but not yet committed.
+		c. transactions, including commits and rollbacks
+			i. Transactions are executing programs that form a logical unit of database processing.
+				1) Commits are when a transaction is completed successfully and its effects are recorded permanently on the database.  
+				2) Rollbacks return the database state to a previous commit.
+		d. the ACID properties
+			i. Atomicity
+			ii. Consistency
+			iii. Isolation
+			iv. Durability
+		e. Schedule
+			i. DBMS must keep a history of all transactions running on a system to avoid problems above.
+	2. Chapter 21 introduction and Section 21.1 — Explain the following.
+		a. Lock
+			i. A lock is a variable associated with a data item that describes the status of the item with respect to possible operations that can be applied to it.
+		b. two-phase locking
+			i. A technique used to prevent multiple transactions from accessing the items concurrently.
+	3. Review Oracle’s Overview of Transaction Processing in PL/SQL (only; you can skip the other sections on this page) — Compare and contrast the following.
+		a. SAVEPOINT, COMMIT vs ROLLBACK [TO]
+			i. Commit statement ends the current transaction, making changes current and visible to all users.
+			ii. Rollbacks end the current transaction and undoes any changes made during that transactino.
+			iii. Savepoints save and mark the current point in the session.
+		b. LOCK TABLE vs. FOR UPDATE
+			i. Lock table locks the entire table, whereas the for update command will only lock specific rows.
+

@@ -1,0 +1,6 @@
+
+2.2
+a. Yes, I would use 'check (score is null or votes > 1000)'
+
+b. Yes, if you are trying to refactor a table and change id's or something similar,
+it might be nice to update

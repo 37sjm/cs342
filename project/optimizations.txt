@@ -1,0 +1,83 @@
+SQL> explain plan for
+  2  select p.name as Player_Name, t.name as Team_Name, le.name as League_Name, le.location as League_Location from
+  3  player p left outer join team t
+  4  on p.teamid = t.id
+  5  inner join league_standing l
+  6  on l.teamid = t.id
+  7  inner join league le
+  8  on le.id = l.leagueid;
+
+Explained.
+
+SQL> SELECT PLAN_TABLE_OUTPUT FROM TABLE(DBMS_XPLAN.DISPLAY());
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+Plan hash value: 2945523385
+
+--------------------------------------------------------------------------------
+-------
+
+| Id  | Operation              | Name         | Rows  | Bytes | Cost (%CPU)| Tim
+e     |
+
+--------------------------------------------------------------------------------
+-------
+
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+|   0 | SELECT STATEMENT       |              |  1089 |   157K|    12   (0)| 00:
+00:01 |
+
+|*  1 |  HASH JOIN             |              |  1089 |   157K|    12   (0)| 00:
+00:01 |
+
+|   2 |   NESTED LOOPS         |              |    39 |  4017 |     7   (0)| 00:
+00:01 |
+
+|   3 |    MERGE JOIN CARTESIAN|              |    78 |  6006 |     7   (0)| 00:
+00:01 |
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+
+|   4 |     TABLE ACCESS FULL  | LEAGUE       |     2 |    94 |     3   (0)| 00:
+00:01 |
+
+|   5 |     BUFFER SORT        |              |    39 |  1170 |     4   (0)| 00:
+00:01 |
+
+|   6 |      TABLE ACCESS FULL | TEAM         |    39 |  1170 |     2   (0)| 00:
+00:01 |
+
+|*  7 |    INDEX UNIQUE SCAN   | SYS_C0012211 |     1 |    26 |     0   (0)| 00:
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+00:01 |
+
+|   8 |   TABLE ACCESS FULL    | PLAYER       |  1089 | 49005 |     5   (0)| 00:
+00:01 |
+
+--------------------------------------------------------------------------------
+-------
+
+
+Predicate Information (identified by operation id):
+---------------------------------------------------
+
+PLAN_TABLE_OUTPUT
+--------------------------------------------------------------------------------
+
+   1 - access("P"."TEAMID"="T"."ID")
+   7 - access("L"."TEAMID"="T"."ID" AND "LE"."ID"="L"."LEAGUEID")
+
+Note
+-----
+   - dynamic statistics used: dynamic sampling (level=2)
+
+
+ ---------------------------------------------------------------------------------------------
+ Here is a query that uses multiple joins in order to identify the league and location that a player plays in.
+Oracle has optimized this query by starting with league locations (the smallest table) and joining up to league (the largest tables).
+There is no need for indexes here as all of the tables are joined on their primary keys which are already indexed by Oracle.

@@ -1,0 +1,36 @@
+10.1 Expectations
+Session 1 ----------------- Session 2 -------------- Comments
+Query table				   	Query table				Same result
+
+
+Delete movie/query			Query table		I expect the first result to not have the movie and the second to have the movie.
+
+
+Rollback and Query   		Query table 			Same result
+
+Add a new movie/Query 		Query table				I expect the first result to ahve the new movie and the second to not have it.
+
+Commit						Query table				Same result
+
+
+Guess 1: Correct, both queries returned the same result.
+
+Guess 2: Correct, the first session (where the movie was deleted) only returned 40 movies, whereas the second session did not see the change and still returned 41.
+
+Guess 3: Correct, both sessions were at the starting state of the database, and returned all 41 movies.
+
+Guess 4: Correct, the first session (where the movie was inserted) returned 42 movies, while the second session did not see the new changes and still returned 41.
+
+Guess 5: Correct, both sessions have now seen the changes and will return 42 movies.
+
+10.1.a
+I found that if I had a succesful transaction and then closed the session, Oracle would automatically update the table for both sessions (commit) which I belive was the correct and intended behavior for what to do when a session is closed with succesful transactions that haven't been committed.
+
+10.1.b
+Atomicity - With Oracles commit and rollback features, transactions can either be completed fully, or rolled back and aborted.
+
+Consistency - I think that triggers/constraints allow for data to be only changed in a consistent and defined way.
+
+Isolation - Using Oracle's LOCK TABLE feature, we can definitely isolate data when a transaction is about to occur.
+
+Durability - Commiting changes to the table allows the data that has been changed to be maintained in the database.

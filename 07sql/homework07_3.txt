@@ -1,0 +1,18 @@
+
+7.3.a
+π employee_id, first_name, last_name, email, hire_date, department_name
+    (Employees ∞ department_id = department_id Departments)
+
+{e.employee_id, e.first_name, e.last_name, e.email, d.hire_date |
+    Employees(e) AND Departments(d) AND e.department_id = d.department_id}
+
+b.
+{ e.first_name, e.last_name, e.employee_id | empview(e) AND e.hire_date = { min(e.hire_date) | empview(e)}}
+
+
+
+σ
+
+π
+
+∞

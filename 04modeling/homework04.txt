@@ -1,0 +1,21 @@
+14.31a. 1NF - All attributes of the Book table do not contain a list of values.
+	BCNF - This table is not BCNF. With the given non-trivial functional dependencies, Book_title alone is not a superkey, and yet it is listed as the LHS in the first listed functional dependency.
+	4NF - Because this table failed the BCNF test, it is not 4NF.
+     b. Decomposition:
+	Book(Book_Title, Author_Name)
+	BookInformation(Book_title, Publisher, Book_type)
+	TypePrice(Book_type, List_price)
+	AuthorInfo(Author_name, AuthorAfiliation)
+
+14.35.a. Possible Candidate Keys - (Book_Name, Author, Edition), (Book_Name, Author, Edition, Copyright_Year), (Author, Edition)
+
+      b. This relation does have the MVD because given a book_name and author, there are still many possibilities of Edition and Copyright_year combinations. For example, given the book_name DB_Fundamentals and the author Navathe, there is edition 5 in 2007 and edition 4 in 2004. However, book_name and author are a subkey at most, which makes this a multivalued dependency.
+
+      c.  Book(book_name, author)
+		No non-trivial functional dependencies.
+		No multivalued dependencies.
+			4NF
+	  Edition(book_name, edition, copyright_year)
+		Book_name, edition -> copyright year -  (Book_name, edition) is a super key
+		No multivalued dependencies.
+			4NF.

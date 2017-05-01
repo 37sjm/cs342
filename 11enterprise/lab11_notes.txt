@@ -1,0 +1,20 @@
+c. How do the external librarires in the project pane relate to J2SE and J2EE?
+	The external libraries include jdk 1.8 which is the Java 8 (J2SE) library, as well as the GlassFish library which is important for creating this enterprise architecture.
+
+d. At what tier does this application run?
+	I believe that this application would run on the Web tier, as it's goal is to allow us to retrieve database information through the web.
+
+e. What server does this step use to server up your application? This uses localhost:8080 which is simply using this machine as a "local host" for the server. This differs from a regular server as other machines are unable to access my local host (at least as far as I know.)
+
+f. What is a WAR file?
+	A WAR file is a JAR file used to distribute JavaServer Pages, Servlets, classes, etc.
+
+g. What's the difference between explode and non-exploded war files?
+	Non-exploded war files are the unzipped directories that you can have the server deploy, rather than packaging up the files and putting that package onto the server.
+
+h. Compare and contrast EAR and WAR artifacts.
+	WAR files contain the Servlet classes, JSP files, etc. whereas EAR files contain both JAR and WAR files and more or less contain the entire J2EE project.
+
+
+11.2.b What library does this application use for REST support?
+	The JAX-RS library is used.

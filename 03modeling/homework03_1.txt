@@ -1,0 +1,8 @@
+1.a
+  From what I see, the flight table would represent a general idea of a flight. This would be similar to our "Class" table from our in-class examples. The flight table just has very general information about the airline, weekdays that the flight will take place, and the flight number. Going deeper, the flight_leg table would represents the actual start-to-end flight that you will be taking. It has relationships like arrival and departure airports, showing that flight legs would give you information about the start and destination location. Furthermore, the leg_instance table dives into the specifics of how you will be getting from the start location to the end location. This will give you information on each specific leg. So if you have a flight from Detroit to Chicago, with a Grand Rapids layover, the leg instances would be the individual flights from Detroit -> Grand Rapids, and then from Grand Rapids -> Chicago.
+
+1.b
+  The dotted underline of an attribute in ERD shows that the attribute is a partial key for a weak entity, and must be paired with another attribute in order to make the candidate key of the table.
+
+1.c
+  My guess for why the Seat entity is separated from the Reservation entity is because someone who is making a reservation can make {1, *} seat reservations. For example, when we traveled for the NCAA tournament with soccer this past fall, our coach would make 27 seat reservations that would all go under one name. Separating the Seat entity in the ERD makes it very clear that this will need to be done in the database in order to properly set aside room for the {1, *} relationship.

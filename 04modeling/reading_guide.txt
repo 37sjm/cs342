@@ -1,0 +1,44 @@
+	1. Read Chapter 14 (focus primarily on Sections 14.1-2, 14.3.1-3, 14.5-6) — It’s ok to submit rather fuzzy or even empty answers on the material specifically marked for Wednesday’s discussion.
+		a. Explain the four informal guidelines discussed in Section 14.1.
+			i. Making sure that the semantics of the attributes is clear in the schema
+				1. Semantics of a relation refers to its meaning resulting from the interpretation of attribute values in a tuple.
+				2. How to achieve this: you must design a schema that is very easy to explain the meaning.
+			ii. Reducing the redundant information in tuples
+				1. Group attributes together to minimize storage space.
+					a. Using table joins that contain redundant information is inefficient for both queries and storage.
+					b. Update
+						i. Insertion Anomalies
+							1. Redundant data causes inserts to be trickier, as the corresponding attribute values most be equal across tables.
+						ii. Deletion Anomalies
+							1. Deletions with redundant data may cause loss of data, if updates have not been processed on one table and then the corresponding tuple is deleted.
+						iii. Modification Anomalies
+							1. If you change a high level attribute, all of the redundant data related will also have to change.
+							2. I.e. changing a manager's department in the 
+			iii. Reducing the null values in tuples
+				1. Too many null's is inefficient for storage space, and also decreases the clearness of the schema semantics (it's harder to determine what attributes are supposed to mean with many null values)
+			iv. Disallowing the possibility of generating spurious tuples
+				1. A spurious tuple is a record produced as a result of a join on two or more tables where the joining fields are neither a primary or foreign keys 
+				2. Relations must be designed in a way that tables can be appropriately joined, using corresponding primary and foreign keys.
+		b. Explain the terms functional dependency (for Monday, see Section 14.2) and multi-valued dependency (for Wednesday, see Section 14.6) by giving an example of each and showing how it satisfies the term’s formal definition.
+			i. Functional Dependency
+				1.  A functional dependency, denoted by X -> Y, between two sets of attributes X and Y that are subsets of R specifies a constraint on the possible tuples that can forma  relation state r of R.
+				2. Example found on stack overflow to help simpilfy this definition: A functional dependency defines a functional relationship between attributes. For example: PersonId functionally determines BirthDate (normally written as PersonId -> BirthDate). Another way of saying this is: There is exactly one Birth Date for any given given any instance of a person. Note that the converse may or may not be true. Many people may have been born on the same day. Given a BirthDate we may find many PersonId sharing that date.
+			ii. Multi-Valued Dependency
+				1. FOR WEDNESDAY
+		c. Review the formal definitions of these terms: superkey; key (see Section 14.3.3).
+			i. Superkey
+				1. Definition – A superkey of a relation schema R={A1, A2, A3, …} is a set of attributes S as a subset of R with the property that no two tuples in any legal relation state r of R will be equal
+			ii. Key
+				1. Definition – A key K is a superkey with the additional property that removal of any attribute from K will cause K not to be a superkey anymore.
+		d. Explain BCNF (for Monday, see Section 14.5) and 4NF (for Wednesday, see Section 14.6) by giving an example relation and proving whether its schema conforms (or fails to conform) to the definitions of each normal form.
+			i. BCNF
+				1. Boyce Codd Normal Form
+				2. Simpler form of 3NF, but it was found to be stricter than 3NF. Every relation in BCNF is also 3NF; however, not every relation in 3NF is in BCNF
+			ii. 4NF 
+				1. FOR WEDNESDAY
+		e. Explain when one would one want to normalize a relational schema and when one might want to de-normalize one.
+			i. Normailization
+				1. Normalization of data can be considered a process of analyzing the given relation schemas based on their FDs and primary keys to achieve desirable properties of minimizing redundancy and minimizing the insertion, deletion, and update anomalies.
+				2. We want to normalize our data when we want to decrease redundancy and anomalies.
+			ii. Denormalization is a strategy used on a previously-normalized database to increase performance. The idea behind it is to add redundant data where we think it will help us the most. We can use extra attributes in an existing table, add new tables, or even create instances of existing tables. The usual goal is to decrease the running time of select queries by making data more accessible to the queries or by generating summarized reports in separate tables. This process can bring some new problems, and we’ll discuss them later.
+

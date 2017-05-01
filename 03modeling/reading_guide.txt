@@ -1,0 +1,41 @@
+1. Read Chapter 3.
+	a. Compare and contrast the database and the software design processes. Are agile modeling practices applicable to database design as well?
+		a. No, agile methods should not be worked into database design. This is because refactoring database tables as you need will cause you more trouble than to design it properly in the first place. Creating proper data and functional requirements, and conceptual schemas are important for the long-term database design, and should not be consistently changed based on every sprint.
+	b. Explain the following terms: entities, relationships (including cardinality and participation constraints), attributes (simple, composite, multi-valued and derived).
+		a. Entities
+			i. Described as a thing or object in the real world with an independent existence.
+				1) Can have physical, or conceptual existence.
+		b. Relationships
+			i. References from one table to another
+			ii. Relationship types can act as a "middle man" in a database, providing a table that connects data from separate tables.
+			iii. Cardinality - there can be more than two tables involved in the relationship (binary, ternary, etc.)
+				1) Minimum cardinality constraint - the minimum number of relationship instances that each entity can participate in
+			iv. Participation constraints - specifies whether the existence of an entity depends on its being related to another entity via the relationship type.
+		c. Attributes
+			i. Composite
+				1) Can be divided into smaller subparts, which represent more basic attributes with independent meanings.
+					a) Ex. Address can be divided to Street, City, State, Zip
+			ii. Simple
+				1) Attributes that are not divisible. (Street)
+			iii. Multivalued
+				1) Attributes where entities can have different numbers of values
+					a) College degrees, someone may have one, another may have zero, another may have two
+			iv. Derived
+				1) Attributes that can be determined from other attributes. 
+					a) Age, can be determined by the birthdate attribute and today's date.
+	c. Explain weak entities and identifying relationships.
+		a. Weak Entities
+			i. Entity types that do not have key attributes of their own.
+		b. Identifying Relationships
+			i. A mapping between the weak entity type and its owner
+	d. Model a person-household database (from class 2) using an ERD.
+		a. Rather than mapping a foreign key into each table that required it, we could use a relationship type for each kind of relationship, and map each person to a household that way. (Similar to the PersonHousehold table)
+		b. Just create a mapping of each person to each household, without a specific focus of the view of all the attributes carried along with each entity.
+		c. NOTE: diagram is drawn out in paper notes.
+	e. Skim the material in Section 3.8 on UML diagrams; we won’t use it here but we have addressed it in CS 262 and will review it in unit 11.
+Note the ERD reference sheet in Figure 3.14.
+2. Read Chapter 9.
+	a. Map the ERD model from above to a relational database model.
+		a. This is what we did in class, with the foreign key approach. (See class notes)
+	b. Explain how to map from a UML model to a relational database model. We will address this issue more carefully in a later unit (on object-relational mapping).
+Put in each variable as an attribute to the corresponding entity, and do not worry about the implementation of various functions, that's handled in the app programming.
