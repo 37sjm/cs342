@@ -1,5 +1,6 @@
 import models.Person;
 
+import javax.ejb.PostActivate;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -9,6 +10,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
+
+import static jdk.nashorn.internal.runtime.PropertyDescriptor.GET;
 
 /**
  * This stateless session bean serves as a RESTful resource handler for the CPDB.
@@ -66,5 +69,41 @@ public class CPDBResource {
     public List<Person> getPeople() {
         return em.createQuery(em.getCriteriaBuilder().createQuery(Person.class)).getResultList();
     }
+
+    @PUT
+    @Path("people/{x}")
+    @Produces("text/plain")
+    public String putPerson(@PathParam("x") long id) {
+        if (em.find(Person.class, id) == null) {
+            return "Person not found";
+        } else {
+            //find a way to get person from request
+            em.merge(p);
+            return "Successful update of person: " + p.getFirstname() + " " + p.getLastname();
+        }
+    }
+
+    @POST
+    @Path("people/")
+    @Produces("text/plain")
+    public String postPerson() {
+        //figure out how to get person from request
+        em.persist(p);
+        return "Successfully posted person...";
+    }
+
+    @DELETE
+    @Path("people/{x}")
+    @Produces("text/plain")
+    public String deletePerson(@PathParam("x") long id) {
+        Person p = em.find(Person.class, id);
+        if (p == null) {
+            return "Person not found";
+        } else {
+            em.remove(p);
+            return "Succesfully deleted person p";
+        }
+    }
+
 
 }
