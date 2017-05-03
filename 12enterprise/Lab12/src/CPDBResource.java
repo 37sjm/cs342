@@ -4,10 +4,7 @@ import javax.ejb.PostActivate;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -72,8 +69,9 @@ public class CPDBResource {
 
     @PUT
     @Path("people/{x}")
+    @Consumes("models/person")
     @Produces("text/plain")
-    public String putPerson(@PathParam("x") long id) {
+    public String putPerson(@PathParam("x") long id, Person p) {
         if (em.find(Person.class, id) == null) {
             return "Person not found";
         } else {
@@ -85,8 +83,9 @@ public class CPDBResource {
 
     @POST
     @Path("people/")
+    @Consumes("models/person")
     @Produces("text/plain")
-    public String postPerson() {
+    public String postPerson(Person p) {
         //figure out how to get person from request
         em.persist(p);
         return "Successfully posted person...";

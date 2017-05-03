@@ -9,9 +9,7 @@
       <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>cpdb</user-name>
-      <introspection-schemas>*:CPDB,PUBLIC,SYS,SYSTEM</introspection-schemas>
       <resolve-scope>*:CPDB,PUBLIC</resolve-scope>
-      <unqualified-resolve-schemas>*:CPDB,PUBLIC</unqualified-resolve-schemas>
     </data-source>
   </component>
 </project>
